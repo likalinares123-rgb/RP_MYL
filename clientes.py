@@ -1,18 +1,17 @@
-from flask import Blueprint, render_template, request, redirect
+from flask import Blueprint, render_template
 from clientes_db import crear_tabla_clientes
 
 clientes_bp = Blueprint("clientes", __name__, url_prefix="/clientes")
 
-# 👇 Esto se ejecuta UNA vez cuando arranca Flask
+# 👇 Se ejecuta una sola vez al iniciar
 crear_tabla_clientes()
 
 # 🟢 LISTADO
 @clientes_bp.route("/")
-def listado():
+def listado_clientes():
     return render_template("clientes.html")
 
-# 🟢 FORMULARIO
+# 🟢 FORMULARIO (opcional, ya lo tenés en otro blueprint)
 @clientes_bp.route("/nuevo")
 def nuevo():
     return render_template("clientes_form.html")
-
