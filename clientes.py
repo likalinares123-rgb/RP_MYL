@@ -1,6 +1,7 @@
-from flask import Blueprint, render_template
-from clientes_db import crear_tabla_clientes
+from flask import Blueprint, render_template, request, redirect, url_for
 from db import get_connection
+from clientes_db import crear_tabla_clientes
+
 
 clientes_bp = Blueprint("clientes", __name__, url_prefix="/clientes")
 
@@ -38,6 +39,7 @@ def eliminar_cliente(id):
     conn.close()
 
     return redirect(url_for("clientes.listado_clientes"))
+
 
 @clientes_bp.route("/editar/<int:id>")
 def editar_cliente(id):
