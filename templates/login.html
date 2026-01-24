@@ -81,7 +81,7 @@
     </h1>
 
     <!-- 👉 Redirige directo al home -->
-    <form method="GET" action="/">
+<form method="GET" action="{{ url_for('home') }}">
 
         <label>Usuario</label>
         <input type="text" name="usuario" placeholder="Ingrese usuario" required>
