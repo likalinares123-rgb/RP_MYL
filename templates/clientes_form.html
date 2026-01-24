@@ -1,13 +1,31 @@
-<h1>Nuevo cliente</h1>
+<h1>
+    {% if cliente %}
+        Editar cliente
+    {% else %}
+        Nuevo cliente
+    {% endif %}
+</h1>
 
-<form method="post" action="/clientes/guardar">
-    Nombre:<br>
-    <input name="nombre"><br><br>
+<form method="POST"
+      action="{% if cliente %}
+                  /clientes/actualizar/{{ cliente[0] }}
+              {% else %}
+                  /clientes/guardar
+              {% endif %}">
 
-    Email:<br>
-    <input name="email"><br><br>
+    <label>Nombre</label><br>
+    <input type="text" name="nombre"
+           value="{{ cliente[1] if cliente }}" required><br><br>
 
-    <button>Guardar</button>
+    <label>Email</label><br>
+    <input type="email" name="email"
+           value="{{ cliente[2] if cliente }}" required><br><br>
+
+    <button type="submit">
+        {% if cliente %}Actualizar{% else %}Guardar{% endif %}
+    </button>
 </form>
 
+<br>
 <a href="/clientes">Volver</a>
+
