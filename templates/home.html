@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Panel principal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+            padding: 40px;
+        }
+        h1 {
+            margin-bottom: 30px;
+            color: #333;
+        }
+        .menu {
+            display: flex;
+            gap: 20px;
+        }
+        .card {
+            background: white;
+            width: 200px;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-decoration: none;
+            color: #333;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+        }
+        .card h2 {
+            margin-bottom: 10px;
+            color: #2c7be5;
+        }
+        .card p {
+            font-size: 14px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Panel principal</h1>
+
+<div class="menu">
+    <a class="card" href="/clientes">
+        <h2>Clientes</h2>
+        <p>Gestionar clientes</p>
+    </a>
+
+    <a class="card" href="/empresas">
+        <h2>Empresas</h2>
+        <p>Gestionar empresas</p>
+    </a>
+
+    <a class="card" href="/productos">
+        <h2>Productos</h2>
+        <p>Gestionar productos</p>
+    </a>
+</div>
+
+</body>
+</html>

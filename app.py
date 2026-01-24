@@ -39,16 +39,22 @@ def obtener_clientes():
     conn.close()
     return datos
 
+# 🟢 HOME (PANEL PRINCIPAL)
 @app.route("/")
-def inicio():
-    return """
-        <h1>Inicio</h1>
-        <a href="/clientes">Ver clientes</a>
-    """
+def home():
+    return render_template("home.html")
 
+# 🟢 CLIENTES (YA EXISTENTE)
 @app.route("/clientes")
 def clientes():
     lista = obtener_clientes()
     return render_template("clientes.html", clientes=lista)
 
+# 🔹 PLACEHOLDERS (para después)
+@app.route("/empresas")
+def empresas():
+    return "<h1>Empresas</h1><p>Próximamente...</p><a href='/'>Volver</a>"
 
+@app.route("/productos")
+def productos():
+    return "<h1>Productos</h1><p>Próximamente...</p><a href='/'>Volver</a>"
