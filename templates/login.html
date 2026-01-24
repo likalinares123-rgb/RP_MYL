@@ -81,8 +81,7 @@
     </h1>
 
     <!-- 👉 Redirige directo al home -->
-<form method="GET" action="{{ url_for('home') }}">
-
+<form method="POST" action="/ingresar">
         <label>Usuario</label>
         <input type="text" name="usuario" placeholder="Ingrese usuario" required>
 
@@ -90,9 +89,9 @@
         <input type="password" name="password" placeholder="Ingrese contraseña" required>
 
         <button type="submit">
-            <i class="fa-solid fa-right-to-bracket"></i>
-            Ingresar
-        </button>
+        <i class="fa-solid fa-right-to-bracket"></i>
+        Ingresar
+    </button>
     </form>
 
 </div>
