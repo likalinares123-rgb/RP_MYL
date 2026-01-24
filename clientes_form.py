@@ -28,7 +28,6 @@ def guardar_cliente():
     cur.close()
     conn.close()
 
-    # ✅ MENSAJE DE ÉXITO
-    flash("✅ Cliente guardado correctamente", "success")
+ 
 
     return redirect(url_for("clientes.listado_clientes"))

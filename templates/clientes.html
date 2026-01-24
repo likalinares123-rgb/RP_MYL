@@ -38,9 +38,31 @@
             margin-top: 20px;
             color: #666;
         }
-    </style>
+        
+   .alert.success {
+    background: #d1e7dd;
+    color: #0f5132;
+    padding: 15px;
+    border-radius: 8px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+</style>
+
 </head>
 <body>
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    {% for category, message in messages %}
+      <div class="alert {{ category }}">
+        {{ message }}
+      </div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+
 
 <h1>Clientes</h1>
 
