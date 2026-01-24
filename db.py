@@ -1,7 +1,11 @@
-import psycopg2
 import os
-
-DATABASE_URL = os.environ.get("DATABASE_URL")
+import psycopg2
 
 def get_connection():
-    return psycopg2.connect(DATABASE_URL)
+    database_url = os.environ.get("DATABASE_URL")
+
+    if not database_url:
+        raise Exception("DATABASE_URL no está configurada")
+
+    return psycopg2.connect(database_url)
+

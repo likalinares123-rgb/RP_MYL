@@ -41,3 +41,5 @@ def obtener_clientes():
     cur.close()
     conn.close()
     return clientes
+
+

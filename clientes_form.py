@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, redirect, url_for
+from flask import Blueprint, render_template, request, redirect, url_for, flash
 from db import get_connection
 
 clientes_form_bp = Blueprint(
@@ -27,5 +27,8 @@ def guardar_cliente():
     conn.commit()
     cur.close()
     conn.close()
+
+    # ✅ MENSAJE DE ÉXITO
+    flash("✅ Cliente guardado correctamente", "success")
 
     return redirect(url_for("clientes.listado_clientes"))
