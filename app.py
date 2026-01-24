@@ -1,22 +1,54 @@
-from flask import Flask
+from flask import Flask, render_template
 import sqlite3
+import os
 
 app = Flask(__name__)
+DB_NAME = "clientes.db"
+
+def init_db():
+    if not os.path.exists(DB_NAME):
+        conn = sqlite3.connect(DB_NAME)
+        cursor = conn.cursor()
+        cursor.execute("""
+        CREATE TABLE clientes (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            nombre TEXT,
+            email TEXT
+        )
+        """)
+        cursor.executemany(
+            "INSERT INTO clientes (nombre, email) VALUES (?, ?)",
+            [
+                ("Ana", "ana@mail.com"),
+                ("Luis", "luis@mail.com"),
+                ("María", "maria@mail.com"),
+                ("Carlos", "carlos@mail.com"),
+                ("Lucía", "lucia@mail.com"),
+                ("Pedro", "pedro@mail.com"),
+            ]
+        )
+        conn.commit()
+        conn.close()
 
 def obtener_clientes():
-    conn = sqlite3.connect("clientes.db")
+    init_db()
+    conn = sqlite3.connect(DB_NAME)
     cursor = conn.cursor()
     cursor.execute("SELECT nombre, email FROM clientes")
-    clientes = cursor.fetchall()
+    datos = cursor.fetchall()
     conn.close()
-    return clientes
+    return datos
 
 @app.route("/")
-def listar_clientes():
-    clientes = obtener_clientes()
-    html = "<h1>Listado de clientes</h1><ul>"
-    for nombre, email in clientes:
-        html += f"<li>{nombre} - {email}</li>"
-    html += "</ul>"
-    return html
+def inicio():
+    return """
+        <h1>Inicio</h1>
+        <a href="/clientes">Ver clientes</a>
+    """
+
+@app.route("/clientes")
+def clientes():
+    lista = obtener_clientes()
+    return render_template("clientes.html", clientes=lista)
+
 

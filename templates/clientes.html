@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Clientes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+            padding: 30px;
+        }
+        h1 {
+            color: #333;
+        }
+        table {
+            border-collapse: collapse;
+            width: 60%;
+            background: white;
+            margin-bottom: 30px;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #2c7be5;
+            color: white;
+        }
+        select {
+            padding: 8px;
+            width: 300px;
+            font-size: 14px;
+        }
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #2c7be5;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Listado de clientes</h1>
+
+<table>
+    <tr>
+        <th>Nombre</th>
+        <th>Email</th>
+    </tr>
+    {% for nombre, email in clientes %}
+    <tr>
+        <td>{{ nombre }}</td>
+        <td>{{ email }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<h2>Seleccionar cliente</h2>
+
+<select>
+    {% for nombre, email in clientes %}
+    <option>{{ nombre }} - {{ email }}</option>
+    {% endfor %}
+</select>
+
+<br>
+<a href="/">Volver</a>
+
+</body>
+</html>
