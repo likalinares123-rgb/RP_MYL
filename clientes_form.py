@@ -1,22 +1,24 @@
-from flask import Flask, render_template
-from clientes import clientes_bp
+from flask import Blueprint, render_template, request, redirect
+from db import get_connection
 
-app = Flask(__name__)
+clientes_form_bp = Blueprint("clientes_form", __name__)
 
-# 🔗 Registrar módulo clientes
-app.register_blueprint(clientes_bp)
+@clientes_form_bp.route("/clientes/nuevo", methods=["GET", "POST"])
+def nuevo_cliente():
+    if request.method == "POST":
+        nombre = request.form["nombre"]
+        email = request.form["email"]
 
-# 🟢 HOME (MENÚ PRINCIPAL)
-@app.route("/")
-def home():
-    return render_template("home.html")
+        conn = get_connection()
+        cur = conn.cursor()
+        cur.execute(
+            "INSERT INTO clientes (nombre, email) VALUES (%s, %s)",
+            (nombre, email)
+        )
+        conn.commit()
+        cur.close()
+        conn.close()
 
-# 🔹 PLACEHOLDERS
-@app.route("/empresas")
-def empresas():
-    return "<h1>Empresas</h1><p>Próximamente...</p><a href='/'>Volver</a>"
+        return redirect("/clientes")
 
-@app.route("/productos")
-def productos():
-    return "<h1>Productos</h1><p>Próximamente...</p><a href='/'>Volver</a>"
-
+    return render_template("clientes_form.html")
