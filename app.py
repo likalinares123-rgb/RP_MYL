@@ -11,9 +11,11 @@ app.register_blueprint(clientes_bp)
 app.register_blueprint(clientes_form_bp)
 app.register_blueprint(login_bp) 
 
+# 🟢 HOME (MENÚ PRINCIPAL)
 @app.route("/")
-def index():
-    return redirect("/login")
+def home():
+    return render_template("login.html")
+
 
 @app.route("/home")
 def home():
