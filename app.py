@@ -1,7 +1,7 @@
 from flask import Flask, render_template
 from clientes import clientes_bp
 from clientes_form import clientes_form_bp
-from login import login_bp 
+from login.routes import login_bp
 
 app = Flask(__name__)
 app.secret_key = "clave-secreta-temporal"  
