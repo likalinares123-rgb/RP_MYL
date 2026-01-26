@@ -80,8 +80,7 @@
         Login
     </h1>
 
-    <!-- 👉 Redirige directo al home -->
-<form method="POST" action="/ingresar">
+<form method="POST" action="{{ url_for('login.ingresar') }}">
         <label>Usuario</label>
         <input type="text" name="usuario" placeholder="Ingrese usuario" required>
 
