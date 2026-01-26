@@ -17,7 +17,7 @@ def home():
     return render_template("login.html")
 
 
-@app.route("/home")
+@app.route("/homeP")
 def home():
     return render_template("home.html")
 

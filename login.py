@@ -10,5 +10,5 @@ def login():
 @login_bp.route("/ingresar", methods=["POST"])
 def ingresar():
     # más adelante validás usuario/password
-    return redirect("/home")
+    return redirect("/homeP")
 
