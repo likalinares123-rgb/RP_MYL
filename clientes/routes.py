@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request, redirect, url_for
 from db import get_connection
-from clientes_db import crear_tabla_clientes
+from clientes.repository import crear_tabla_clientes
 
 
 clientes_bp = Blueprint("clientes", __name__, url_prefix="/clientes")
