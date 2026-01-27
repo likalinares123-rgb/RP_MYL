@@ -22,12 +22,12 @@ def obtener_clientes():
 @clientes_bp.route("/")
 def listado_clientes():
     clientes = obtener_clientes()   
-    return render_template("clientes/clientes.html", clientes=clientes)
+    return render_template("clientes/list.html", clientes=clientes)
 
 # 🟢 FORMULARIO (ya lo usás desde el otro blueprint)
 @clientes_bp.route("/nuevo")
 def nuevo():
-    return render_template("clientes_form.html")
+    return render_template("clientes/form.html")
 
 @clientes_bp.route("/eliminar/<int:id>")
 def eliminar_cliente(id):
@@ -53,7 +53,7 @@ def editar_cliente(id):
     cur.close()
     conn.close()
 
-    return render_template("clientes_form.html", cliente=cliente)
+    return render_template("clientes/form.html", cliente=cliente)
 
 @clientes_bp.route("/actualizar/<int:id>", methods=["POST"])
 def actualizar_cliente(id):

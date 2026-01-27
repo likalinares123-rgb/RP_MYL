@@ -10,7 +10,7 @@ clientes_form_bp = Blueprint(
 # 🟢 Mostrar formulario
 @clientes_form_bp.route("/nuevo", methods=["GET"])
 def nuevo_cliente():
-    return render_template("clientes_form.html")
+    return render_template("clientes/form.html")
 
 # 🟢 Guardar cliente
 @clientes_form_bp.route("/guardar", methods=["POST"])
