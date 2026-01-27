@@ -14,12 +14,12 @@ app.register_blueprint(login_bp)
 # 🟢 HOME (MENÚ PRINCIPAL)
 @app.route("/")
 def login():
-    return render_template("login.html")
+    return render_template("login/login.html")
 
 
 @app.route("/home")
 def home():
-    return render_template("home.html")
+    return render_template("login/home.html")
 
 
 # 🔹 PLACEHOLDERS
