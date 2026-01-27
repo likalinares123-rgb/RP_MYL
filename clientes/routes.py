@@ -22,7 +22,7 @@ def obtener_clientes():
 @clientes_bp.route("/")
 def listado_clientes():
     clientes = obtener_clientes()   
-    return render_template("clientes.html", clientes=clientes)
+    return render_template("clientes/clientes.html", clientes=clientes)
 
 # 🟢 FORMULARIO (ya lo usás desde el otro blueprint)
 @clientes_bp.route("/nuevo")

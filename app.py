@@ -1,6 +1,6 @@
 from flask import Flask, render_template
-from clientes import clientes_bp
-from clientes_form import clientes_form_bp
+from clientes.routes import clientes_bp
+from clientes.form import clientes_form_bp
 from login.routes import login_bp
 
 app = Flask(__name__)
