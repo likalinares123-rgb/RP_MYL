@@ -6,10 +6,12 @@ from login.routes import login_bp
 app = Flask(__name__)
 app.secret_key = "clave-secreta-temporal"  
 
-# 🔗 Registrar módulo clientes
+# 🔗 Registrar módulo
 app.register_blueprint(clientes_bp)
 app.register_blueprint(clientes_form_bp)
 app.register_blueprint(login_bp) 
+app.register_blueprint(productos_bp)
+app.register_blueprint(productos_form_bp)
 
 # 🟢 HOME (MENÚ PRINCIPAL)
 @app.route("/")
