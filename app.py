@@ -2,6 +2,8 @@ from flask import Flask, render_template
 from clientes.routes import clientes_bp
 from clientes.form import clientes_form_bp
 from login.routes import login_bp
+from clientes.routes import productos_bp
+from clientes.form import productos_form_bp
 
 app = Flask(__name__)
 app.secret_key = "clave-secreta-temporal"  
