@@ -12,7 +12,7 @@ productos_form_bp = Blueprint(
 def nuevo_producto():
     return render_template("productos/form.html")
 
-# 🟢 Guardar cliente
+# 🟢 Guardar 
 @productos_form_bp.route("/guardar", methods=["POST"])
 def guardar_producto():
     nombre = request.form["nombre"]

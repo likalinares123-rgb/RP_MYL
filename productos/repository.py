@@ -14,7 +14,7 @@ def crear_tabla_productos():
     cur.close()
     conn.close()
 
-def obtener_clientes():
+def obtener_productos():
     conn = get_connection()
     cur = conn.cursor()
     cur.execute("SELECT id, nombre, descripción FROM productos ORDER BY id DESC")
