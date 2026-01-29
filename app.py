@@ -28,7 +28,6 @@ def home():
 # def empresas():
 #     return "<h1>Empresas</h1><p>Próximamente...</p><a href='/'>Volver</a>"
 
-@app.route("/productos")
-def productos():
-    return "<h1>Productos</h1><p>Próximamente...</p><a href='/'>Volver</a>"
-
+# @app.route("/productos")
+# def productos():
+#     return "<h1>Productos</h1><p>Próximamente...</p><a href='/'>Volver</a>"
