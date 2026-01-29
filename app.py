@@ -24,9 +24,9 @@ def home():
 
 # 🔹 PLACEHOLDERS
 
-@app.route("/empresas")
-def empresas():
-    return "<h1>Empresas</h1><p>Próximamente...</p><a href='/'>Volver</a>"
+# @app.route("/empresas")
+# def empresas():
+#     return "<h1>Empresas</h1><p>Próximamente...</p><a href='/'>Volver</a>"
 
 @app.route("/productos")
 def productos():
