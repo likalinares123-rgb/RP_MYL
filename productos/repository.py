@@ -1,6 +1,6 @@
 from db import get_connection
 
-def crear_tabla_clientes():
+def crear_tabla_productos():
     conn = get_connection()
     cur = conn.cursor()
     cur.execute("""
