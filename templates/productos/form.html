@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Productos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .card {
+            background: white;
+            padding: 30px 40px;
+            border-radius: 10px;
+            width: 380px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            margin-bottom: 18px;
+            font-size: 14px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #2c7be5;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #1a68d1;
+        }
+
+        .volver {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #555;
+        }
+
+        .volver:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h1>
+        {% if producto %}
+            ✏️ Editar producto
+        {% else %}
+            ➕ Nuevo producto
+        {% endif %}
+    </h1>
+
+    <form method="POST"
+          action="{% if producto %}
+                      /productos/actualizar/{{ producto[0] }}
+                  {% else %}
+                      /productos/guardar
+                  {% endif %}">
+
+        <label>Nombre</label>
+        <input type="text" name="nombre"
+               value="{{ producto[1] if producto }}" required>
+
+        <label>Email</label>
+        <input type="descripcion" name="descripcion"
+               value="{{ producto[2] if producto }}" required>
+
+        <button type="submit">
+            {% if producto %}Actualizar{% else %}Guardar{% endif %}
+        </button>
+    </form>
+
+    <a href="/productos" class="volver">⬅ Volver al listado</a>
+</div>
+
+</body>
+</html>
