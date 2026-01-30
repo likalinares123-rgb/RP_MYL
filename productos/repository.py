@@ -6,8 +6,8 @@ def crear_tabla_productos():
     cur.execute("""
         CREATE TABLE IF NOT EXISTS productos (
             id SERIAL PRIMARY KEY,
-            nombre TEXT NOT NULL,
-            descripcion TEXT NOT NULL
+            nombre VARCHAR(100) NOT NULL,
+            precio NUMERIC(10,2) NOT NULL
         )
     """)
     conn.commit()
@@ -17,8 +17,19 @@ def crear_tabla_productos():
 def obtener_productos():
     conn = get_connection()
     cur = conn.cursor()
-    cur.execute("SELECT id, nombre, descripcion FROM productos ORDER BY id DESC")
-    datos = cur.fetchall()
+    cur.execute("SELECT id, nombre, precio FROM productos ORDER BY id DESC")
+    data = cur.fetchall()
     cur.close()
     conn.close()
-    return datos
+    return data
+
+def insertar_producto(nombre, precio):
+    conn = get_connection()
+    cur = conn.cursor()
+    cur.execute(
+        "INSERT INTO productos (nombre, precio) VALUES (%s, %s)",
+        (nombre, precio)
+    )
+    conn.commit()
+    cur.close()
+    conn.close()

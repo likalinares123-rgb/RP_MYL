@@ -3,7 +3,6 @@ from clientes.routes import clientes_bp
 from clientes.form import clientes_form_bp
 from login.routes import login_bp
 from productos.routes import productos_bp
-from productos.form import productos_form_bp
 
 app = Flask(__name__)
 app.secret_key = "clave-secreta-temporal"  
@@ -13,7 +12,7 @@ app.register_blueprint(clientes_bp)
 app.register_blueprint(clientes_form_bp)
 app.register_blueprint(login_bp) 
 app.register_blueprint(productos_bp)
-app.register_blueprint(productos_form_bp)
+
 
 # 🟢 HOME (MENÚ PRINCIPAL)
 @app.route("/")
